@@ -110,8 +110,21 @@ public class SpellCheckerController {
 		long start = System.nanoTime();
 		List<RichWord> outputTextList;
 		
+		if (dichotomicSearch) {
+
+			outputTextList = dizionario.spellCheckTextDichotomic(inputTextList);
+
+		} else if (linearSearch) {
+
+			outputTextList = dizionario.spellCheckTextLinear(inputTextList);
+
+		} else {
+
 			outputTextList = dizionario.spellCheckText(inputTextList);
 
+
+
+		}
 		
 		long end = System.nanoTime();
 

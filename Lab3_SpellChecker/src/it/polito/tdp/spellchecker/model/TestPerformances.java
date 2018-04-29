@@ -46,6 +46,7 @@ public class TestPerformances {
 			model.spellCheckTextDichotomic(inputTextList);
 			end = System.nanoTime();
 			t3.add((end - start) / 10e6);
+
 		}
 
 		System.out.print("\n");
