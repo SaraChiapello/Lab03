@@ -61,6 +61,7 @@ public class SpellCheckerController {
 	@FXML
 	void doActivation(ActionEvent event) {
 		if (boxLingua.getValue() != null) {
+			boxLingua.setDisable(true);
 			txtDaCorreggere.setDisable(false);
 			txtCorretto.setDisable(false);
 			spellCheckButton.setDisable(false);
@@ -115,16 +116,16 @@ public class SpellCheckerController {
 		long end = System.nanoTime();
 
 		int numErrori = 0;
-		StringBuilder richText = new StringBuilder();
+		String richText = "";
 
 		for (RichWord r : outputTextList) {
 			if (!r.isCorrect()) {
 				numErrori++;
-				richText.append(r.getWord() + "\n");
+				richText+=(r.getWord() + "\n");
 			}
 		}
 
-		txtCorretto.setText(richText.toString());
+		txtCorretto.setText(richText);
 		lblStato.setText("Spell check completed in " + (end - start) / 1E9 + " seconds");
 		lblErrori.setText("The text contains " + numErrori + " errors");
 	}
